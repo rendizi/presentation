@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Node.js, Express & MongoDB</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/black.css">
+	<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-auto-animate>
+				<img src="../assets/node.jpg" alt="sam atlman ugaraet"
+				style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">					
+				<h1 style="font-size: 64px;">Hands on Node.js</h1>
+				<p>
+					<h6 style="font-size: 34px; font-weight: normal; margin-top: 0;">
+						или как приручить JavaScript на сервере без боли и страданий
+					</h6>
+					<small style="font-size: 26px;">
+						by <a href="https://www.linkedin.com/in/alikhan-baglanov-395790272/" target="_blank">Alikhan</a>
+					</small>
+				</p>
+
+			</section>
+
+			<section >
+				<section>
+					<p>Who am I? 🤔</p>
+					
+				</section>
+				<section>
+					<ul>
+						<li>n! incubator 2024 alumni & finalist 🐤</li>
+						<li>Yandex Lyceum (ML'23, Go'24) 👾</li>
+						<li>Head of IT in Unesco Club 🌐</li>
+					</ul>
+				</section>
+				<section>
+					I use arch btw 💀
+				</section>
+			</section>
+
+
+			<section>
+				<p>Agenda</p>
+				<ul>
+					<li>Introduction to Node.js, Express, and MongoDB</li>
+					<li>Setting up the environment</li>
+					<li>Building a simple CRUD app</li>
+					<li>Implementing JWT-based Authentication</li>
+				</ul>
+			</section>
+
+			<!-- Installation Process -->
+			<section>
+				<h3>Installation Process</h3>
+
+				<section>
+					<h3>Installing Node.js</h3>
+					<ul>
+						<li>Download Node.js from <a href="https://nodejs.org" target="_blank">nodejs.org</a></li>
+						<li>Run the installer and follow the instructions</li>
+						<li>Verify the installation:
+							<pre><code class="language-bash">node -v</code></pre>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Installing MongoDB</h3>
+					<ul>
+						<li>Download MongoDB from <a href="https://www.mongodb.com/try/download/community" target="_blank">mongodb.com</a></li>
+						<li>Follow the instructions for your OS</li>
+						<li>Start MongoDB:
+							<pre><code class="language-bash">mongod</code></pre>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Installing Necessary Packages</h3>
+					<pre><code class="language-bash">npm install express mongoose jsonwebtoken bcryptjs</code></pre>
+					<ul>
+						<li>Express: Web framework for Node.js</li>
+						<li>Mongoose: MongoDB object modeling tool</li>
+						<li>jsonwebtoken: For creating and verifying JWTs</li>
+						<li>bcryptjs: For password hashing</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- Setting Up an Express Server -->
+			<section>
+				<h3>Setting Up an Express Server</h3>
+				<pre><code class="language-javascript">
+// Import express
+import express from "express";
+const app = express();
+const PORT = 3000;
+
+// Define a route
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+				</code></pre>
+			</section>
+
+			<!-- Introduction to MongoDB -->
+			<section>
+				<h3>Introduction to MongoDB</h3>
+				<ul>
+					<li>NoSQL database for storing JSON-like documents</li>
+					<li>Schema-less and flexible</li>
+					<li>Works well with JavaScript and Node.js</li>
+				</ul>
+			</section>
+
+			<!-- Connecting MongoDB with Express -->
+			<section>
+				<h3>Connecting MongoDB with Express</h3>
+				<pre><code class="language-javascript">
+// Import mongoose
+import mongoose from "mongoose";
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log("Connected to MongoDB");
+}).catch((error) => {
+  console.log("Error connecting to MongoDB:", error);
+});
+				</code></pre>
+			</section>
+
+			<!-- Building a CRUD API -->
+			<section>
+				<h3>Building a CRUD API</h3>
+				<ul>
+					<li>Create: Add new data</li>
+					<li>Read: Retrieve existing data</li>
+					<li>Update: Modify existing data</li>
+					<li>Delete: Remove existing data</li>
+				</ul>
+			</section>
+
+			<!-- JWT Authentication -->
+			<section>
+				<h3>JWT Authentication</h3>
+
+				<section>
+					<h3>What is JWT?</h3>
+					<ul>
+						<li>JWT stands for JSON Web Token</li>
+						<li>It's a compact, URL-safe token used for secure data transfer</li>
+						<li>Typically used for authentication in web applications</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Structure of a JWT</h3>
+					<ul>
+						<li><strong>Header:</strong> Contains the token type and signing algorithm</li>
+						<li><strong>Payload:</strong> Contains claims or user data</li>
+						<li><strong>Signature:</strong> Verifies the token integrity</li>
+					</ul>
+					<p>Example:</p>
+					<pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+					.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
+					.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
+				</section>
+			</section>
+
+			<!-- Building an Authentication Server with JWT -->
+			<section>
+				<h3>Building an Authentication Server</h3>
+
+				<section>
+					<h3>1. Creating a User Model</h3>
+					<pre><code class="language-javascript">
+// Import mongoose
+import mongoose from "mongoose";
+
+const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
+
+export default mongoose.model('User', UserSchema);
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>2. Registering a New User</h3>
+					<pre><code class="language-javascript">
+import express from "express";
+import bcrypt from "bcryptjs";
+import User from "./models/User";
+
+const router = express.Router();
+
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Create a new user with the hashed password
+    const user = new User({ username, password: hashedPassword });
+    await user.save();
+    
+    res.status(201).send("User registered successfully");
+  } catch (error) {
+    res.status(400).send("Error: " + error.message);
+  }
+});
+
+export default router;
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>3. Logging in and Generating a JWT</h3>
+					<pre><code class="language-javascript">
+import express from "express";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import User from "./models/User";
+
+const router = express.Router();
+
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
+  
+  if (user && await bcrypt.compare(password, user.password)) {
+    const token = jwt.sign({ id: user._id, username: user.username }, 'your-secret-key', { expiresIn: '1h' });
+    res.json({ token });
+  } else {
+    res.status(400).send("Invalid credentials");
+  }
+});
+
+export default router;
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>4. Protecting Routes with JWT</h3>
+					<pre><code class="language-javascript">
+// Middleware to verify JWT
+function authenticateToken(req, res, next) {
+  const token = req.headers['authorization']?.split(' ')[1];
+  if (!token) return res.sendStatus(401);
+
+  jwt.verify(token, 'your-secret-key', (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}
+
+// Protected route
+router.get('/dashboard', authenticateToken, (req, res) => {
+  res.send("Welcome to the dashboard!");
+});
+
+export default router;
+					</code></pre>
+				</section>
+			</section>
+
+			<!-- Conclusion -->
+			<section>
+				<h3>🎉 Conclusion & Q&A</h3>
+				<ul>
+					<li>You've learned the basics of Node.js, Express, MongoDB, and JWT authentication 🚀</li>
+					<li>Ready to create secure and scalable web applications! 🔒</li>
+				</ul>
+				<p>Questions? ❓</p>
+			</section>
+			
+			<section>
+				<h3>💻 Time to build something</h3>
+				<p>Go and clone the <a href="https://github.com/rendizi/-hacknis-back-1" target="_blank">boilerplate</a>! 📂</p>
+			</section>
+			
+			<section>
+				<h3>🔮 What's next?</h3>
+				<ul>
+					<li>Practical AI: Using GPT API in Node.js 🤖</li>
+					<li>Tailwind CSS 🌈</li>
+				</ul>
+			</section>
+			
+
+			<section data-background="white">
+				<p>made with <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17 15" fill="none"><rect x="3.25" width="3" height="9" fill="#32CD32"></rect><rect x="1.75" y="1.5" width="6" height="7.5" fill="#32CD32"></rect><rect x="9.25" y="1.5" width="6" height="7.5" fill="#32CD32"></rect><rect x="10.75" width="3" height="9" fill="#32CD32"></rect><rect x="0.25" y="3" width="16.5" height="3" fill="#32CD32"></rect><rect x="0.25" y="3" width="16.5" height="4.5" fill="#32CD32"></rect><rect x="4.75" y="7.5" width="7.5" height="4.5" fill="#32CD32"></rect><rect x="3.25" y="9" width="10.5" height="1.5" fill="#32CD32"></rect><rect x="6.25" y="9" width="4.5" height="4.5" fill="#32CD32"></rect><rect x="7.75" y="10.5" width="1.5" height="4.5" fill="#32CD32"></rect></svg> by</p>
+				<div class="logo-container" >
+					<img src="../assets/logo_eng.jpg" alt="Logo English" class="logo-img" />
+					<img src="../assets/logo_hack.jpg" alt="Logo Hack" class="logo-img" />
+				</div>
+			</section>
+			
+			<style>
+				.logo-container {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 40px; 
+					padding: 50px;
+				}
+			
+				.logo-img {
+					width: 150px;
+					height: 150px;
+					border-radius: 50%;
+					box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+					transition: transform 0.3s, box-shadow 0.3s;
+				}
+			
+				.logo-img:hover {
+					transform: scale(1.1); 
+					box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+				}
+			</style>
+			
+		</div>
+
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+		});
+	</script>
+</body>
+</html>
+3
