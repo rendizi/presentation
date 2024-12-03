@@ -15,48 +15,61 @@
         <div class="slides">
           <!-- Introduction -->
           <section>
-            <h1>React for Beginners</h1>
-            <p>A hands-on guide to mastering React.js</p>
-            <small>By Alikhan</small>
+            <img src="../assets/react.png" style="height: 300px;"/>
+            <h1 style="font-size: 40px;">React for Teapots 🍵</h1>
+            <p style="font-size: 30px;">From zero to hero in 2 hours 🚀</p>
+            <small style="font-size: 20px;">mentored by <a href="" type="_blank">Bebdyshev 🧑‍💻</a></small>
+          </section>
+          <section>
+            <section>
+                <p>Who am I? 🤔</p>
+            </section>
+            <section>
+                <ul>
+                    <li>Developer 🖥️</li>
+                    <li>Educator 📚</li>
+                    <li>Teapot Enthusiast 🍵</li>
+                </ul>
+            </section>
           </section>
   
           <!-- Agenda -->
           <section>
-            <h3>Agenda</h3>
+            <h3>Agenda 📋</h3>
             <ul>
-              <li>What is React?</li>
-              <li>Setting up a React project</li>
-              <li>Understanding JSX</li>
-              <li>Components, Props, and State</li>
-              <li>React Hooks</li>
-              <li>Building a small React app</li>
+              <li>What is React? 🤓</li>
+              <li>Setting up a React project 🛠️</li>
+              <li>Understanding JSX 📝</li>
+              <li>Components, Props, and State 🧩</li>
+              <li>React Hooks 🔄</li>
+              <li>Building a small React app 🏗️</li>
             </ul>
           </section>
   
           <!-- What is React? -->
           <section>
-            <h3>What is React?</h3>
+            <h3>What is React? 💡</h3>
             <ul>
-              <li>A JavaScript library for building user interfaces</li>
-              <li>Component-based architecture</li>
-              <li>Developed and maintained by Facebook</li>
-              <li>Efficient rendering with the Virtual DOM</li>
+              <li>A JavaScript library for building user interfaces 🌐</li>
+              <li>Component-based architecture 🧩</li>
+              <li>Developed and maintained by Facebook 📘</li>
+              <li>Efficient rendering with the Virtual DOM 🪞</li>
             </ul>
           </section>
   
           <!-- Setting up a React project -->
           <section>
-            <h3>Setting up a React Project</h3>
+            <h3>Setting up a React Project 🛠️</h3>
             <ol>
               <li>
-                Install Node.js:
+                Install Node.js: 💻
                 <pre><code>node -v</code></pre>
               </li>
               <li>
-                Install Create React App:
+                Install Create React App: 🛠️
                 <pre><code>npx create-react-app my-app</code></pre>
               </li>
-              <li>Navigate to the project folder and start the development server:
+              <li>Navigate to the project folder and start the development server: 🚀
                 <pre><code>npm start</code></pre>
               </li>
             </ol>
@@ -64,11 +77,11 @@
   
           <!-- Understanding JSX -->
           <section>
-            <h3>Understanding JSX</h3>
+            <h3>Understanding JSX ✍️</h3>
             <p>JSX is a syntax extension for JavaScript, used to describe UI.</p>
             <pre>
               <code class="language-javascript">
-const element = <h1>Hello, React!</h1>;
+const element = <h1>Hello, React! 👋</h1>;
 ReactDOM.render(element, document.getElementById('root'));
               </code>
             </pre>
@@ -76,16 +89,16 @@ ReactDOM.render(element, document.getElementById('root'));
   
           <!-- Components -->
           <section>
-            <h3>Components</h3>
+            <h3>Components 🧩</h3>
             <ul>
-              <li>Reusable pieces of UI</li>
-              <li>Two types: Functional and Class components</li>
+              <li>Reusable pieces of UI ♻️</li>
+              <li>Two types: Functional and Class components 🏗️</li>
             </ul>
             <h4>Functional Component Example:</h4>
             <pre>
               <code class="language-javascript">
 function Greeting() {
-  return <h1>Hello, React!</h1>;
+  return <h1>Hello, React! 👋</h1>;
 }
               </code>
             </pre>
@@ -93,16 +106,15 @@ function Greeting() {
   
           <!-- Props and State -->
           <section>
-            <h3>Props and State</h3>
+            <h3>Props and State 📊</h3>
             <section>
-              <h4>Props</h4>
               <ul>
-                <li>Short for "properties"</li>
-                <li>Used to pass data from parent to child</li>
+                <li>Short for "properties" 🏠</li>
+                <li>Used to pass data from parent to child 🛤️</li>
                 <pre>
                   <code class="language-javascript">
 function Welcome(props) {
-  return <h1>Hello, {props.name}!</h1>;
+  return <h1>Hello, {props.name}! 👋</h1>;
 }
                   </code>
                 </pre>
@@ -110,10 +122,10 @@ function Welcome(props) {
             </section>
             <section>
               <ul>
-                <li>Manages component-specific data</li>
-                <li>Stateful components can re-render based on state changes</li>
+                <li>Manages component-specific data 🛠️</li>
+                <li>Stateful components can re-render based on state changes 🔄</li>
                 <pre>
-                    <pre><code class="language-javascript">
+                  <code class="language-javascript">
 import React, &#123; useState &#125; from 'react';
                         
 function Counter() &#123;
@@ -126,8 +138,7 @@ function Counter() &#123;
          &lt;/div&gt;
     );
 &#125;
-                        </code></pre>
-                        
+                  </code>
                 </pre>
               </ul>
             </section>
@@ -136,17 +147,17 @@ function Counter() &#123;
           <!-- Hooks -->
           <section>
             <section>
-                <h3>React Hooks</h3>
+                <h3>React Hooks 🎣</h3>
             <ul>
-              <li>Use state and lifecycle features in functional components</li>
+              <li>Use state and lifecycle features in functional components 💡</li>
             </ul>
             <h4>Examples:</h4>
             <ul>
               <li>
-                <strong>useState:</strong> Manage local state
+                <strong>useState:</strong> Manage local state 🛠️
               </li>
               <li>
-                <strong>useEffect:</strong> Side effects like data fetching
+                <strong>useEffect:</strong> Side effects like data fetching 🌐
               </li>
             </ul>
             </section>
@@ -154,14 +165,19 @@ function Counter() &#123;
             <pre>
               <code class="language-javascript">
 import React, { useEffect, useState } from 'react';
+import axios from "axios"
 
 function FetchData() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.example.com/data')
-      .then(response => response.json())
-      .then(data => setData(data));
+    axios.get('https://api.example.com/data')
+        .then((response) => {
+            setData(response.data); 
+        })
+        .catch((err) => {
+            console.error(err)
+        });
   }, []);
 
   return <div>{JSON.stringify(data)}</div>;
@@ -173,12 +189,17 @@ function FetchData() {
   
           <!-- Conclusion -->
           <section>
-            <h3>Conclusion</h3>
+            <h3>Conclusion 🎉</h3>
             <ul>
-              <li>React makes building UI scalable and maintainable</li>
-              <li>Practice by building small apps</li>
+              <li>React makes building UI scalable and maintainable 💪</li>
+              <li>Practice by building small apps 🏗️</li>
             </ul>
-            <p>Next Steps: Explore Redux, React Router, and advanced patterns!</p>
+            <p>Next Steps: Explore Redux, React Router, and advanced patterns! 🚀</p>
+          </section>
+          
+          <section>
+            <h3>Time to build something 🏗️</h3>
+            <p>Start with cloning <a href="https://github.com/Bebdyshev">repo 📂</a></p>
           </section>
         </div>
       </div>
