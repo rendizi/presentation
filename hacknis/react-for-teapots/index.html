@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>React for Teapots</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/black.css">
+	<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+<body>
+	<div class="reveal">
+        <div class="slides">
+          <!-- Introduction -->
+          <section>
+            <h1>React for Beginners</h1>
+            <p>A hands-on guide to mastering React.js</p>
+            <small>By Alikhan</small>
+          </section>
+  
+          <!-- Agenda -->
+          <section>
+            <h3>Agenda</h3>
+            <ul>
+              <li>What is React?</li>
+              <li>Setting up a React project</li>
+              <li>Understanding JSX</li>
+              <li>Components, Props, and State</li>
+              <li>React Hooks</li>
+              <li>Building a small React app</li>
+            </ul>
+          </section>
+  
+          <!-- What is React? -->
+          <section>
+            <h3>What is React?</h3>
+            <ul>
+              <li>A JavaScript library for building user interfaces</li>
+              <li>Component-based architecture</li>
+              <li>Developed and maintained by Facebook</li>
+              <li>Efficient rendering with the Virtual DOM</li>
+            </ul>
+          </section>
+  
+          <!-- Setting up a React project -->
+          <section>
+            <h3>Setting up a React Project</h3>
+            <ol>
+              <li>
+                Install Node.js:
+                <pre><code>node -v</code></pre>
+              </li>
+              <li>
+                Install Create React App:
+                <pre><code>npx create-react-app my-app</code></pre>
+              </li>
+              <li>Navigate to the project folder and start the development server:
+                <pre><code>npm start</code></pre>
+              </li>
+            </ol>
+          </section>
+  
+          <!-- Understanding JSX -->
+          <section>
+            <h3>Understanding JSX</h3>
+            <p>JSX is a syntax extension for JavaScript, used to describe UI.</p>
+            <pre>
+              <code class="language-javascript">
+const element = <h1>Hello, React!</h1>;
+ReactDOM.render(element, document.getElementById('root'));
+              </code>
+            </pre>
+          </section>
+  
+          <!-- Components -->
+          <section>
+            <h3>Components</h3>
+            <ul>
+              <li>Reusable pieces of UI</li>
+              <li>Two types: Functional and Class components</li>
+            </ul>
+            <h4>Functional Component Example:</h4>
+            <pre>
+              <code class="language-javascript">
+function Greeting() {
+  return <h1>Hello, React!</h1>;
+}
+              </code>
+            </pre>
+          </section>
+  
+          <!-- Props and State -->
+          <section>
+            <h3>Props and State</h3>
+            <section>
+              <h4>Props</h4>
+              <ul>
+                <li>Short for "properties"</li>
+                <li>Used to pass data from parent to child</li>
+                <pre>
+                  <code class="language-javascript">
+function Welcome(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+                  </code>
+                </pre>
+              </ul>
+            </section>
+            <section>
+              <ul>
+                <li>Manages component-specific data</li>
+                <li>Stateful components can re-render based on state changes</li>
+                <pre>
+                    <pre><code class="language-javascript">
+import React, &#123; useState &#125; from 'react';
+                        
+function Counter() &#123;
+    const [count, setCount] = useState(0);
+                        
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Count: &#123;count&#125;&lt;/p&gt;
+            &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Increment&lt;/button&gt;
+         &lt;/div&gt;
+    );
+&#125;
+                        </code></pre>
+                        
+                </pre>
+              </ul>
+            </section>
+          </section>
+  
+          <!-- Hooks -->
+          <section>
+            <section>
+                <h3>React Hooks</h3>
+            <ul>
+              <li>Use state and lifecycle features in functional components</li>
+            </ul>
+            <h4>Examples:</h4>
+            <ul>
+              <li>
+                <strong>useState:</strong> Manage local state
+              </li>
+              <li>
+                <strong>useEffect:</strong> Side effects like data fetching
+              </li>
+            </ul>
+            </section>
+            <section>
+            <pre>
+              <code class="language-javascript">
+import React, { useEffect, useState } from 'react';
+
+function FetchData() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+
+  return <div>{JSON.stringify(data)}</div>;
+}
+              </code>
+            </pre>
+            </section>
+          </section>
+  
+          <!-- Conclusion -->
+          <section>
+            <h3>Conclusion</h3>
+            <ul>
+              <li>React makes building UI scalable and maintainable</li>
+              <li>Practice by building small apps</li>
+            </ul>
+            <p>Next Steps: Explore Redux, React Router, and advanced patterns!</p>
+          </section>
+        </div>
+      </div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+		});
+	</script>
+</body>
+</html>
